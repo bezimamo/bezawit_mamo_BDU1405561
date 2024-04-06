@@ -14,6 +14,14 @@ body{
     font-size: 16px;
     font-family: "poppins" sans-serif;
 }
+body.dark
+{
+    --bg-black-900:#151515;
+    --bg-black-100:#222222;
+    --bg-black-50:#393939;
+    --text-black-900:#ffffff;
+    --text-black-700:#e9e9e9;  
+}
 *
 {
     margin: 0;
@@ -37,15 +45,38 @@ ul{
     display: block;
     padding: 0 30px;
     opacity: 1;
-    
+    position: fixed;
+    left: 270px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+.section.back-section
+{
+    z-index: 1;
+}
+.section.active
+{
+    z-index: 2; 
+    opacity: 1;
+    animation: slideSection 1s ease;
+}
+@keyframes slideSection
+{
+    0%{
+        transform:translateX(100%) ;
+    }
+    100%{
+        transform: translateX(0%);
+    }
 }
 .hidden
 {
   display: none !important;  
-}
-.main-content
-{
-    padding-left: 270px;
 }
 .padd-15
 {
@@ -129,7 +160,7 @@ transition: all 0.3s ease;
 /*Aside*/
 .aside
 {
-width: 270;
+width: 300px;
 background:var(--bg-black-100) ;
 position: fixed;
 left: 0;
@@ -140,11 +171,13 @@ display: flex;
 justify-content: center;
 align-items: center;
 z-index: 10;
+transition: all 0.3s ease;
 
 }
 .aside .logo{
 position: absolute;
 top: 50px;
+left: 0px;
 font-size: 30px;
 text-transform: capitalize;
 }
@@ -160,7 +193,7 @@ text-transform: capitalize;
 .aside .logo a span{
     font-family: 'clicker script', cursive;
     font-size: 40px;
-    color: aqua;
+    color: #37b182;
 }
 .aside .logo a::before
 {
@@ -198,6 +231,7 @@ text-transform: capitalize;
     display: none;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
 
 }
 .aside .nav-toggler span
@@ -208,24 +242,40 @@ background: var(--skin-color);
 display: inline-block;
 position: relative;
 }
-.aside .nav-toggler span ::before{
-  content: '';
-  height: 2px;
-  width: 18px;
-  background: var(--skin-color);  
-  position: absolute;
-  top: -6px;
-  left: 0;
+.aside .nav-toggler.open span
+{
+    background-color: transparent;
 }
 
-.aside .nav-toggler span ::after{
-    content: '';
+.aside .nav-toggler span::before
+{
+  content: '';
   height: 2px;
   width: 18px;
   background: var(--skin-color);  
   position: absolute;
   top: 6px;
   left: 0;
+}
+.aside .nav-toggler.open span::before
+{
+transform: rotate(45deg);
+top: 0;
+}
+.aside .nav-toggler span ::after
+{
+  content: '';
+  height: 2px;
+  width: 18px;
+  background: var(--skin-color);  
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+.aside .nav-toggler.open span::after
+{
+transform: rotate(-45deg);
+top: 0;
 }
 .aside .nav
 {
@@ -303,7 +353,7 @@ h3.my-proffession
     width: 80px;
     border-bottom: 10px solid var(--skin-color);
     border-right: 10px solid var(--skin-color);
-    right: 170px;
+    right: 150px;
     bottom: -40px;
 
 }
@@ -315,7 +365,7 @@ h3.my-proffession
     width: 80px;
     border-top: 10px solid var(--skin-color);
     border-left: 10px solid var(--skin-color);
-    left: -45px;
+    left: -50px;
     top: -50px;
 
 }
@@ -389,7 +439,6 @@ color: var(--text-black-100);
 }
 .about .about-content .personal-info .buttons .btn
 {
-margin-right: 15px;
 margin-top: 10px;
 }
 .about .about-content .skills
@@ -714,8 +763,26 @@ padding: 0 50px;
     {
         left: -270px;
     }
-    .main-content{
-        padding-left: 0;
+    .aside.open
+    {
+    left: 0;
+    }
+    .aside .nav-toggler
+    {
+        display: flex;
+        left: 30px;
+    }
+    .aside .nav-toggler.open
+    {
+        left: 300px;
+    }
+
+    .section{
+        left: 0;
+    }
+    .section.open
+    {
+        left: 270px;
     }
     .about .about-content .personal-info .info-item p span
     {
