@@ -14,12 +14,7 @@ window.addEventListener("scroll", () => {
 const alternateStyle = document.querySelectorAll(".alternate-style");
 function setActiveStyle(color)
 {
-    //localStorage.setItem("color",color);
-   // changeColor();
-//}
-//function changeColor(){
     alternateStyle.forEach((style) => {
-       // if(localStorage.getItem("color")===style.getAttribute("title"))
    if(color === style.getAttribute("title"))
        {
         style.removeAttribute("disabled");
@@ -46,6 +41,5 @@ if(document.body.classList.contains("dark"))
 else
 {
     dayNight.querySelector("i").classList.add("fa-moon");
- 
 }
 })

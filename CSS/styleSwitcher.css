@@ -71,17 +71,14 @@ text-transform: capitalize;
 }
 .style-switcher .color2
 {
-    background: #fa5b0f;
+    background: #FFD700;
 }
 .style-switcher .color3
 {
     background: #37b182;
 }
+
 .style-switcher .color4
-{
-    background: #1854b4;
-}
-.style-switcher .color5
 {
     background: #f021b1;
 }
